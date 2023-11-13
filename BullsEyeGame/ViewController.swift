@@ -10,9 +10,14 @@ import UIKit
 class ViewController: UIViewController {
     var currentValue : Int = 0
     var targetValue : Int = 0
+    var score : Int = 0
+    var round : Int = 0
+ 
     
     @IBOutlet weak var slider : UISlider!
     @IBOutlet weak var lblTarget : UILabel!
+    @IBOutlet weak var lblScore : UILabel!
+    @IBOutlet weak var lblRound : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +28,23 @@ class ViewController: UIViewController {
         
     }
     @IBAction func showAlert (){
-        let message = "The value of slider is :\(currentValue)" +
-        "\nThe target value is :\(targetValue)"
         
-        let alert = UIAlertController(title: "Hello World", message: message, preferredStyle: .alert)
+        var newScore : Int = 0
+        
+        if (targetValue==currentValue){
+            newScore=200
+        }else if (abs(targetValue-currentValue)<=5){
+            newScore=150
+        }else{
+            newScore = 100-abs(targetValue-currentValue)
+        }
+        
+        round+=1
+        score += newScore
+        
+        let message = "Score : \(newScore)"
+        
+        let alert = UIAlertController(title: "Bulls Eye Game", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
@@ -46,6 +64,8 @@ class ViewController: UIViewController {
     
     func updateLabels(){
         lblTarget.text = String(targetValue)
+        lblRound.text = String(round)
+        lblScore.text=String(score)
     }
 
 

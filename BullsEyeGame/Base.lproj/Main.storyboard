@@ -105,6 +105,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="lblRound" destination="v7C-GY-czI" id="npx-bu-Iro"/>
+                        <outlet property="lblScore" destination="jtW-4a-AgU" id="Lcr-jc-Aum"/>
                         <outlet property="lblTarget" destination="PXc-Sy-pXK" id="svV-AB-fvx"/>
                         <outlet property="slider" destination="Jf8-dp-Smf" id="eIG-rw-Pnr"/>
                     </connections>
